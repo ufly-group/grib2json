@@ -29,9 +29,9 @@ jobs:
     - name: Build
       run: mvn package
 
-    # - name: Compress Project
-    #   run: |
-    #     zip -r grib2json.zip ./target
+    - name: Compress Project
+      run: |
+        zip -r grib2json.zip ./target
 
     - name: Create Tag
       id: create_tag
@@ -44,4 +44,4 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ steps.create_tag.outputs.release_tag }}
-        files: ./target
+        files: ./grib2json.zip
